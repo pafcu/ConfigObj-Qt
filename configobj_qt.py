@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	def main():
 		"""Function to test functionality."""
 		import sys
-		from PyQt4.QtGui import QApplication
+		from PyQt4.QtCore import QCoreApplication
 		conf = """
 		p1 = 1
 		[mysection]
@@ -59,7 +59,7 @@ if __name__ == '__main__':
 		[[mysubsection]]
 		p3 = 3.14
 		"""
-		app = QApplication(sys.argv)
+		app = QCoreApplication(sys.argv)
 		app.setApplicationName('configtest')
 		app.setOrganizationName('foo')
 		config = configobj.ConfigObj(conf.split('\n'))
