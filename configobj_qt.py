@@ -65,6 +65,6 @@ if __name__ == '__main__':
 		config = configobj.ConfigObj(conf.split('\n'))
 		settings = to_QSettings(config)
 		config2 = from_QSettings(settings)
-		print config == config2
+		print(config == config2)
 	main()
 
