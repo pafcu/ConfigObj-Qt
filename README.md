@@ -3,6 +3,8 @@ ConfigObj-Qt provides a methods to convert between QSettings and ConfigObj objec
 The library contains two functions, from_QSettings which converts from a QSettings object to a ConfigObj object and to_QSettings, which converts from a ConfigObj to a QSettings object.
 
 A short example:
+
+```
 	import sys
 	from PyQt4.QtGui import QApplication
 	from PyQt4.QtCore import QSettings
@@ -16,7 +18,10 @@ A short example:
 	config = configobj.ConfigObj(conf.split('\n'))
 	settings = to_QSettings(config)
 	config2 = from_QSettings(settings)
-	print config == config2
+	print(config == config2)
+
+```
 
 Support the developer if you like this software:
-http://flattr.com/thing/106876/ConfigObj-Qt
+
+[![Donate using Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/saparvia/donate)

@@ -1,16 +1,17 @@
 """Module containing functions to convert between ConfigObj and QSettings objects."""
+
 import configobj
 from PyQt4.QtCore import QSettings
 
 def section_path(config):
 	"""Get names of section ancestors."""
 	section = config
-	if section.name == None: # No name => root section => no ancestors
+	if not section.name: # No name => root section => no ancestors
 		return []
 
 	path = [section.name]
 
-	# Iterate until root section is reached 
+	# Iterate until root section is reached
 	while section.parent.name != None:
 		path.insert(0, section.parent.name)
 		section = section.parent
@@ -44,7 +45,7 @@ def from_QSettings(settings):
 			except KeyError:
 				section[section_name] = {}
 				section = section[section_name]
-		section[path.pop()] = str(settings.value(key).toPyObject())
+		section[path.pop()] = str(settings.value(key))
 	return config
 
 if __name__ == '__main__':
@@ -65,6 +66,5 @@ if __name__ == '__main__':
 		config = configobj.ConfigObj(conf.split('\n'))
 		settings = to_QSettings(config)
 		config2 = from_QSettings(settings)
-		print(config == config2)
+		assert(config == config2)
 	main()
-
